@@ -8,6 +8,7 @@ import { PeopleService } from './people-service.service';
 export class AppComponent implements OnInit {
   title = 'app works!';
   people: {}[];
+  sex:[] = ['Mann', 'Kvinna', 'Annat'];
 
   constructor(private userService: PeopleService) {
 
