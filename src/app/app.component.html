@@ -13,8 +13,8 @@
                 <img class="card-person-image" src="https://randomuser.me/api/portraits/lego/6.jpg" />
                 <div class="card-person-info">
                   <h2 class="card-title">{{item.name}}</h2>
-                  <p>{{item.birthday}}</p>
-                  <p>{{sex[item.sex}}]</p>
+                  <p>{{item.birthday | date}}</p>
+                  <p>{{sex[0]}}</p>
                   <p>{{item.phone}}</p>
                 </div>
               </div>
@@ -31,40 +31,39 @@
         <h2 class="panel-title">Lägg till Vänn</h2>
       </header>
       <div class="panel-body">
+        <form [formGroup]="form" novalidate>
           <div class="input-group">
-                      <label for="name">Namn</label>
-            
-            <input type="text" class="form-control text-right" id="name" name="name" placeholder="" value=""
-            />
+            <label for="name">Namn</label>
+
+            <input type="text" class="form-control text-right" id="name" name="name" placeholder="" value="" formControlName="name" />
           </div>
 
-                    <div class="input-group">
-                      <label for="birthday">Födelsedag</label>
-                      
-            <input type="text" class="form-control text-right" id="birthday" name="input-name" placeholder="" value=""
-            />
+          <div class="input-group">
+            <label for="birthday">Födelsedag</label>
+
+            <input type="text" class="form-control text-right" id="birthday" name="input-name" placeholder="" value="" formControlName="birthday" />
           </div>
-                    <div class="input-group">
-                      <label for="phone">Telefon</label>
-            <input type="text" class="form-control text-right" id="phone" name="input-name" placeholder="" value=""
-            />
+          <div class="input-group">
+            <label for="phone">Telefon</label>
+            <input type="text" class="form-control text-right" id="phone" name="input-name" placeholder="" value="" formControlName="phone" />
           </div>
-<div class="form-group">
-    <label for="select">Kön</label>
-    <select id="select" name="select" class="form-control" data-required="true">
+          <div class="form-group">
+            <label for="select">Kön</label>
+            <select id="select" name="select" class="form-control" data-required="true">
         <option selected="" value="">Välj...</option>
       
-        <option value="option1">Man</option>
-        <option value="option1">Kvinna</option>
-        <option  value="option1">Annat</option>
+        <option value="0">Man</option>
+        <option value="1">Kvinna</option>
+        <option  value="2">Annat</option>
         
         
     </select>
-</div>
-          <br>
-          <div class="form-group">
-    <button type="submit"  class="btn btn-brand">Lägg till</button>
-</div>
+          </div>
+        </form>
+        <br>
+        <div class="form-group">
+          <button type="button" (click)="createPerson($event)" class="btn btn-brand">Lägg till</button>
+        </div>
       </div>
     </section>
   </div>
